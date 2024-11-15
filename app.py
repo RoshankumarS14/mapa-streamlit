@@ -148,6 +148,13 @@ if __name__ == "__main__":
     geo_hash = None
     if output:
         if output["all_drawings"] is not None:
+            center_radius_list = []
+            for draw in output["all_drawings"]:
+                center = draw["geometry"]["coordinates"][:2]
+                radius = draw["geometry"]["radius"]
+                if center and radius:
+                    center_radius_list.append({"center": center, "radius": radius})
+                    st.write(f"Center: {center}, Radius: {radius:.2f} meters")
             # get latest modified drawing
             all_drawings = [get_hash_of_geojson(draw["geometry"]) for draw in output["all_drawings"]]
             geo_hash = _get_active_drawing_hash(state=st.session_state, drawings=all_drawings)
