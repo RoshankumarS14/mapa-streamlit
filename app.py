@@ -47,7 +47,7 @@ def _show_map(center: List[float], zoom: int) -> folium.Map:
         draw_options={
             "polyline": False,
             "poly": False,
-            "circle": False,
+            "circle": True,
             "polygon": False,
             "marker": False,
             "circlemarker": False,
